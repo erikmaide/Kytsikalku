@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<KytsiKalku.Models.FuelData>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Log data";
 }
 
 <table class="table table-striped table-dark" style="margin-top:100px">
@@ -50,39 +50,16 @@
                 </td>
 
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                   <button type="button" class="btn btn-warning"><strong><a asp-action="Edit" style="color:azure !important" asp-route-id="@item.Id">Edit</a>    </strong></button>
+                   <button type="button" class="btn btn-info">   <strong><a asp-action="Details" style="color:azure !important" asp-route-id="@item.Id">Details</a> </strong></button>
+                   <button type="button" class="btn btn-danger"> <strong><a asp-action="Delete" style="color:azure !important" asp-route-id="@item.Id">Delete</a> </strong> </button>
                 </td>
             </tr>
         }   <tr>
-                <td>Total driven km is @Total</td>
+            <td>Total driven km is @Total</td>
+            <td><button type="button" class="btn btn-success"><strong><a asp-action="Create" style="color:azure !important"> Add new drivelog</a></strong></button></td>
         </tr>
     </tbody>
 </table>
 
-<style>
-    .container {
-        position: relative;
-        text-align: center;
-        color: white;
-    }
-    .centered {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size:42px;
-
-    }
-</style>
-<div class="container">
-    <img 
-        alt ="Shell-fuel"
-        style=" border-radius: 5%;
-                height: 200px;
-                display: inline" 
-                src="https://f9.pmo.ee/A3_WmjGLEgeIHuzdP1B5Yjt8fn8=/685x0/smart/nginx/o/2018/05/07/7830543t1he252.jpg"/>
-    <div class="centered"><strong><a asp-action="Create" style="color:azure !important">New drivelog</a></strong></div>
-</div>
 
