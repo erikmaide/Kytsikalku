@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<table class="table table-striped table-dark">
+<table class="table table-striped table-dark" style="margin-top:100px">
     <thead>
         <tr>
             <th>
@@ -19,36 +19,70 @@
             <th>
                 @Html.DisplayNameFor(model => model.TripEnd)
             </th>
-            <th></th>
+            <th>
+                Drive length
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TripName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DriveDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TripStart)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TripEnd)
-            </td>
-            <td>
+        @{var Total = 0; }   
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TripName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DriveDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TripStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TripEnd)
+                </td>
+                <td>
+                    @{ 
+                        var TripLength = item.TripEnd - item.TripStart;
+                        Total= Total+TripLength;
+                    }
+                    @TripLength
+                </td>
 
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }   <tr>
+                <td>Total driven km is @Total</td>
         </tr>
-}
     </tbody>
 </table>
-<p>
-    <a asp-action="Create">Add new drive</a>
-</p>
+
+<style>
+    .container {
+        position: relative;
+        text-align: center;
+        color: white;
+    }
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size:42px;
+
+    }
+</style>
+<div class="container">
+    <img 
+        alt ="Shell-fuel"
+        style=" border-radius: 5%;
+                height: 200px;
+                display: inline" 
+                src="https://f9.pmo.ee/A3_WmjGLEgeIHuzdP1B5Yjt8fn8=/685x0/smart/nginx/o/2018/05/07/7830543t1he252.jpg"/>
+    <div class="centered"><strong><a asp-action="Create" style="color:azure !important">New drivelog</a></strong></div>
+</div>
+

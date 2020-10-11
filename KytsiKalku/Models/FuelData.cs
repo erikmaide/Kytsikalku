@@ -24,5 +24,6 @@ namespace KytsiKalku.Models
         [Display(Name = "Final mileage")]
         [Required]
         public int TripEnd { get; set; }
+       
     }
 }
