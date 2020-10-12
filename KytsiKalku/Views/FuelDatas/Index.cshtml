@@ -25,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-        @{var Total = 0;var Fuel = 0;var Compensated = 0;}   
+        @{var Total = 0;var Fuel = 0;}   
         @foreach (var item in Model)
         {
             <tr>
@@ -51,14 +51,17 @@
                 </td>
 
                 <td>
-                   <button type="button" class="btn btn-warning"><strong><a asp-action="Edit" style="color:azure !important" asp-route-id="@item.Id">Edit</a>    </strong></button>
+                   <button type="button" class="btn btn-warning"><strong><a asp-action="Edit" style="color:black !important" asp-route-id="@item.Id">Edit</a>    </strong></button>
                    <button type="button" class="btn btn-info">   <strong><a asp-action="Details" style="color:azure !important" asp-route-id="@item.Id">Details</a> </strong></button>
                    <button type="button" class="btn btn-danger"> <strong><a asp-action="Delete" style="color:azure !important" asp-route-id="@item.Id">Delete</a> </strong> </button>
                 </td>
             </tr>
         }   <tr>
-    <td>Total driven km is @Total</td>
-    <td>@Fuel litres spent</td>
+    <td>Total distance is @Total kilometers</td>
+    <td>@Fuel litres fuel consumed</td>
+    <td></td>
+    <td></td>
+    <td></td>
     <td><button type="button" class="btn btn-success"><strong><a asp-action="Create" style="color:azure !important"> Add new drivelog</a></strong></button></td>
 </tr>
     </tbody>

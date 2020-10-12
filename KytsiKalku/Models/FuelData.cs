@@ -1,14 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections;
 namespace KytsiKalku.Models
 {
     public class FuelData
     {
         public int Id { get; set; }
-
-
 
         [Display(Name = "Driving destination from start to end")]
         [Required]
