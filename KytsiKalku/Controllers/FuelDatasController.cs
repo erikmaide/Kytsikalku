@@ -20,10 +20,21 @@ namespace KytsiKalku.Controllers
         }
 
         // GET: FuelDatas
-        public async Task<IActionResult> Index()
+
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.FuelData.ToListAsync());
+            var tripnames = from m in _context.FuelData
+                         select m;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                tripnames = tripnames.Where(s => s.TripName.Contains(searchString));
+            }
+
+            return View(await tripnames.ToListAsync());
         }
+
+    
 
         // GET: FuelDatas/Details/5
         public async Task<IActionResult> Details(int? id)
