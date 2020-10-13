@@ -6,14 +6,12 @@
 <header>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar">
-        <a class="navbar-brand" asp-controller="FuelDatas" asp-action="Index">Personal drivelog</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <a class="navbar-brand" asp-controller="FuelDatas" asp-action="Index"><img style="height:49px" src="~/assets/dg.png"/></a>
+       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Back</a>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
             </ul>
         </div>
@@ -21,7 +19,7 @@
 
 </header>
 <form asp-controller="FuelDatas" asp-action="Index" style="padding-top:50px; padding-bottom:10px">
-    <div class="form-row">
+    <div class="form-row" style="margin-top:50px;">
         <div class="col">
             <input type="text" class="form-control" placeholder="Filter driving destination from starting position or endpoint" name="SearchString">
         </div>
