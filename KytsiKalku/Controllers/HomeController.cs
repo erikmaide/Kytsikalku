@@ -24,7 +24,7 @@ namespace KytsiKalku.Controllers
         }
 
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
         }
