@@ -8,6 +8,8 @@ Made with ASP.NET Core 3.1
 
 Install Microsoft Visual Studio 2019
 * [Download Microsoft Visual Studio2019](https://visualstudio.microsoft.com/downloads/) - Install Microsoft Visual Studio 2019
+* Clone the code
+* Open with Microsoft Visual Studio 2019
 * Click ►IIS express 
 * Pro$it
 
