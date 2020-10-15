@@ -13,6 +13,6 @@ Install Microsoft Visual Studio 2019
 * Click ►IIS express 
 * Pro$it
 
-## Code of conduct
+## Screenshot
 
-See [CODE-OF-CONDUCT](./CODE-OF-CONDUCT.md)
+<img src="https://raw.githubusercontent.com/erikmaide/test/master/drivelog2.png" />
