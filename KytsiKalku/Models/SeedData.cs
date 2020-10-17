@@ -19,7 +19,7 @@ namespace KytsiKalku.Models
                 {
                     return;   // DB has been seeded
                 }
-
+                else { 
                 context.FuelData.AddRange(
                     new FuelData
                     {
@@ -37,6 +37,7 @@ namespace KytsiKalku.Models
                                         }
 
                 );
+                }
                 context.SaveChanges();
             }
         }
