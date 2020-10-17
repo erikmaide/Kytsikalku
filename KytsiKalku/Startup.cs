@@ -57,6 +57,12 @@ namespace KytsiKalku
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            var serviceScopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+            using (var serviceScope = serviceScopeFactory.CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetService<KytsiKalkuFuelContext>();
+                dbContext.Database.EnsureCreated();
+            }
         }
     }
 }
