@@ -11,7 +11,8 @@ Install Microsoft Visual Studio 2019
 * Clone the code
 * Open with Microsoft Visual Studio 2019
 * Click ►IIS express 
-* Pro$it
+* If running errors, type "dotnet run " in cmd on the project folder
+
 
 ## Screenshot
 
