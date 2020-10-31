@@ -21,7 +21,7 @@ namespace KytsiKalku.Controllers
 
         // GET: FuelDatas
 
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string searchString, int page = 1)
         {
             var tripnames = from m in _context.FuelData
                          select m;
@@ -30,8 +30,10 @@ namespace KytsiKalku.Controllers
             {
                 tripnames = tripnames.Where(s => s.TripName.Contains(searchString));
             }
-
-            return View(await tripnames.ToListAsync());
+            var pageSize = 5;
+            page = Math.Max(1, page);
+            
+            return View(await tripnames.GetPagedAsync(page, pageSize));
         }
 
     

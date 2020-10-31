@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KytsiKalku.Models.FuelData>
+﻿@model PagedResult<FuelData>
 
 @{
     ViewData["Title"] = "Log data";
@@ -6,8 +6,8 @@
 <header>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar">
-        <a class="navbar-brand" asp-controller="FuelDatas" asp-action="Index"><img style="height:39.32px" src="~/assets/dg.png"/></a>
-       
+        <a class="navbar-brand" asp-controller="FuelDatas" asp-action="Index"><img style="height:39.32px" src="~/assets/dg.png" /></a>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -32,22 +32,22 @@
         <div class="col-md-auto">
             <input type="submit" value="Filter" class="form-control" style="border-radius: 0 !important;" />
         </div>
-        </div>
+    </div>
 </form>
 <table class="table table-striped table-dark" style="margin-top:10px">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TripName)
+                Trip name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DriveDate)
+                Drive date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TripStart)
+                Trip Start
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TripEnd)
+                Trip End
             </th>
             <th>
                 Drive length
@@ -56,7 +56,7 @@
     </thead>
     <tbody>
         @{var Total = 0; var Fuel = 0;}
-        @foreach (var item in Model)
+        @foreach (var item in Model.Results)
         {
             <tr>
                 <td>
@@ -96,3 +96,6 @@
         </tr>
     </tbody>
 </table>
+<div>
+    <vc:pager result="@Model"></vc:pager>
+</div>
