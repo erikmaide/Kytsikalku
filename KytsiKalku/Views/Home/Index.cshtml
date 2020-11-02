@@ -19,3 +19,60 @@
 
 </header>
 <img style="max-width: 100%;max-height: 100%;" src="https://images.squarespace-cdn.com/content/v1/5319d2fce4b0d5b5621bebe7/1528382473804-35SPQ2SXW3BKLQ4KQ2VX/ke17ZwdGBToddI8pDm48kE8hTwQ2PMCMz_6pijVncd17gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UfHkFc48y3l1zFufSd-5WB5iFFkbvYk7-csLJYclesOpm4bjm9DAHF2kOsIZRJKXnA/Screen+Shot+2018-06-07+at+16.40.55.png?format=1500w" />
+<canvas id="myChart" style="height:400px !important"></canvas>
+<script type="text/javascript">
+    let tripData = [];
+    let tripNames = [];
+   @foreach (var item in Model)
+   {
+       var Start = item.TripStart;
+       var End = item.TripEnd;
+       var Distance = End - Start;
+       <text>
+       tripData.push(@Distance);
+       tripNames.push('@item.TripName');
+      </text>
+   }
+   const ctx = document.getElementById('myChart').getContext('2d');
+   let myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: tripNames,
+        datasets: [{
+            label: 'Drivedata for the last 2 weeks',
+            data: tripData,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(0, 255, 0, 0.2)',
+                'rgba(255, 215, 0, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(0, 255, 0, 1)',
+                'rgba(255, 215, 0, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                stacked: true
+            }],
+            yAxes: [{
+                stacked: true
+            }]
+        }
+    }
+});
+</script>

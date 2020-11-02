@@ -25,7 +25,7 @@ namespace KytsiKalku.Controllers
         {
             var tripnames = from m in _context.FuelData
                          select m;
-
+           
             if (!string.IsNullOrEmpty(searchString))
             {
                 tripnames = tripnames.Where(s => s.TripName.Contains(searchString));
@@ -33,7 +33,7 @@ namespace KytsiKalku.Controllers
             var pageSize = 5;
             page = Math.Max(1, page);
             
-            return View(await tripnames.GetPagedAsync(page, pageSize));
+            return View(await tripnames.OrderByDescending(m => m.DriveDate).GetPagedAsync(page, pageSize));
         }
 
     

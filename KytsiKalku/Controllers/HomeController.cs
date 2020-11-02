@@ -5,24 +5,35 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 using KytsiKalku.Models;
+using KytsiKalku.Data;
 
 namespace KytsiKalku.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        public readonly KytsiKalkuFuelContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(KytsiKalkuFuelContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        // GET: FuelDatas
 
+        public async Task<IActionResult> Index(string searchString)
+        {
+            DateTime today = DateTime.Today;
+            DateTime twoWeeksBefore = today.AddDays(-14);
+
+            var tripnames = from m in _context.FuelData
+                            where m.DriveDate  >= twoWeeksBefore
+                            select m;
+
+
+            return View(await tripnames.ToListAsync());
+        }
 
         public IActionResult About()
         {
